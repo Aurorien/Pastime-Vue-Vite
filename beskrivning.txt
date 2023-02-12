@@ -1,0 +1,56 @@
+VueLab2
+
+Ett spel där en unlock'ar funktioner. t.ex. svara på en gåta (el. programmeringsfråga) och vinner ett programmeringsskämt, eller lägger ett pussel och vinner att funktionen URL shortener (eller QR-kod generator) dyker fram.
+
+- ett par "sidor" som ger en annan känsla men som samspelar med föregående sida
+- e-handel. Typer av API-värden: produktpris, -namn, -beskrivning, -bild
+- spel/gameification/edugame.  Typer av API-värden:
+- URL shortener: t.ly, ca 2 värden
+- programmeringsskämt 1 värde
+- programmering quiz api?
+
+Skapa en dynamisk Vite-webbapplikation. Det går bra att utgå från projektmappen som genereras genom npx degit jonkri/vite-vue-template#main my-project.
+
+För G så ska följande krav uppfyllas:
+
+gör: något mer med custom event-funktionaliteten, t.ex. att en animation triggas i emit'ens funktion onPunchlineFX()
+
+    -Källkoden för projektet publiceras på GitHub (eller liknande)
+    -Webbapplikationen ska publiceras på GitHub Pages (eller liknande)
+    -Inlämningen ska bestå av ett PDF-dokument som innehåller adresserna till två separata Git repositories: 1) ett repository för källkoden (till exempel vite.config.js, main.js och .vue-filerna) och 2) ett repository för den publicerade “produktionsvarianten” av projektet (GitHub Pages-filerna)
+        Om ditt repository är privat, bjud då in användaren "jonkri" på GitHub/GitLab
+
+    *klar*-Minst en komponent använder Sass, via style-elementet, i sin .vue-fil (el. PostCSS istället för Sass)
+    *klar*-Minst en komponent ska ta emot, och använda, minst en prop (via props-nyckeln)
+    *klar*-En Single Page Application, bestående av minst två webbsidor, ska skapas med Vue Router (Använd både router-link och router-view)
+    *klar*-Webbanrop görs information från en eller flera webbtjänster visas i webbapplikationen (Undvik CORS-problem och använd helst HTTPS, för applikationen ska fungera bra som publicerad; Visa åtminstone tio värden; Använd inte Cities-tjänsten eller någon annan webbtjänst som har tagits upp som ett exempel)
+   *klar*-v-model (och värdet som matas in) används
+   *klar*-Minst en icke-Vue-Router-.vue-komponent ska skapas (App.vue räknas inte)*vanlig "enkel"
+     vue-component* -som troligen läggs till i components-mappen då
+   *klar*-Attributinterpolering (v-bind eller dess kortform) används (key-props (relaterade till v-for) räknas inte)
+   *klar*-Villkorlig rendering (v-if) används
+   *klar*-Händelser (v-on eller dess kortform) används
+   *klar*-Listrendering (v-for) används
+   *klar*-Textinterpolering ({{ och }}) används
+
+För VG ska kraven för G vara uppfyllda. Dessutom ska följande krav uppfyllas:
+
+    *klar*-Bootstrap ska användas i någon utsträckning och anpassas via minst en Sass-variabel (el. Tailwind som anpassas med PostCSS)
+    *klar* -Använd minst ett Vue Router-adressparametervärde - dynamisk länk
+    *klar*-Vuex körs i “strict mode”, och minst ett datavärde sparas i, uppdateras (via en mutation), och hämtas från, Vuex
+    *klar*-Minst en beräknad egenskap (computed) används
+    tips: computed kan hämta/förenkla en Vuex store-variabel
+    *klar*-Alla props ska vara typsäkra -deklarera även vilken datatyp det är i propen
+    *klar*-Minst en bevakare (watch) används
+    *klar*-Minst ett custom event används (skickas och tas emot) (this.&emit)
+    *klar*-Använd någonting annat än fetch (till exempel Axios) för att göra webbanropen
+    *klar*-Det finns en ESLint-konfiguration för projektet, som alla filer följer
+    *klar*-Det finns en Prettier-konfiguration för projektet, som alla filer följer
+
+Projektet utförs individuellt.
+
+Frågor:
+
+computed-variabel i style?
+
+lägga QuoteList i router?
