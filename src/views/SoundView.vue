@@ -1,5 +1,5 @@
 <style scoped lang="scss">
-  @import '../../assets/main.scss';
+  // @import '../../assets/main.scss';
 
   $backgr-color: rgb(252, 247, 207);
 
