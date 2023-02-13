@@ -8,5 +8,14 @@ export default defineConfig({
   plugins: [vue()],
   server: {
     port: 242
+  },
+
+  // ref: https://stackoverflow.com/a/70849876
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "/assets/main.scss" as *;`
+      }
+    }
   }
 })

@@ -1,10 +1,17 @@
-$body-bg: #c8dfc9;
-
-$body-color: rgba(1, 14, 45, 0.9);
-
-$primary:  #119317;
+$primary:  #0b520d;
 $secondary:  #e28a16;
+
+// $third is an invented scss-variable (doesn't exist in bootstrap)
 $third:  #ffad43;
+
+$dark:  rgba(1, 14, 45, 0.9);
+$light:   #c8dfc9;
+
+$body-bg: $light;
+
+$body-color: $dark;
+
+
 
 $spacer: .5rem;
 $spacers: (
@@ -18,3 +25,5 @@ $spacers: (
 ) !default;
 
 @import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/functions";

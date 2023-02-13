@@ -1,6 +1,6 @@
 <!-- components (ej router-componenter): det som syns på alla sidor -->
 <style lang="scss">
-  @import '../assets/main.scss';
+  // @import '../assets/main.scss';
 
   main {
     padding: $spacer;

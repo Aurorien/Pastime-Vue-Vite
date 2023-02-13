@@ -1,5 +1,5 @@
 <style lang="scss">
-  @import '../../assets/main.scss';
+  // @import '../../assets/main.scss';
 
   .sound-button-padding {
     margin: $spacer;
