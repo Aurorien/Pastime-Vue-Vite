@@ -25,6 +25,11 @@
     },
     components: {
       SoundButton
+    },
+    methods: {
+      navigate() {
+        this.$router.push('/quotes/programming')
+      }
     }
   }
 </script>
@@ -34,9 +39,12 @@
     <h1>Welcome!</h1>
     <label for="name-input">Input your name here:</label>
     <input v-model="name" id="name-input" type="text" />
-    <!-- ref: https://codingbeautydev.com/blog/vue-router-link-button/ -->
-    <router-link to="/quotes/programming" custom v-slot="{ navigate }">
+    <!-- ref: https://codingbeautydev.com/blog/vue-router-link-button/
+    <RouterLink to="/quotes/programming" custom v-slot="{ navigate }">
       <SoundButton @click="navigate" role="link">Start</SoundButton>
-    </router-link>
+    </RouterLink> -->
+
+    <!-- programmatic navigation (instead of the v-slot-version above): -->
+    <SoundButton @click="navigate">Start</SoundButton>
   </div>
 </template>

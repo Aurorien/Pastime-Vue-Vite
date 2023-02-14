@@ -22,5 +22,5 @@
 </script>
 
 <template>
-  <h1 class="mb-6">{{ logo }}</h1>
+  <h1 class="mb-6" role="banner">{{ logo }}</h1>
 </template>
