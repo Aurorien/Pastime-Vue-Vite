@@ -1,4 +1,5 @@
-<!-- components (ej router-componenter): det som syns på alla sidor -->
+<!-- components (ej router-components): det som syns på alla sidor -->
+
 <style lang="scss">
   // @import '../assets/main.scss';
 

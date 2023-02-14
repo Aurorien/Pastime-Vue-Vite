@@ -28,7 +28,8 @@
     data() {
       return {
         results: null,
-        listColor: 'lightgreen'
+        listColor: 'lightgreen',
+        punchlineShowsColor: '#fae77c'
       }
     },
     emits: ['punchlinefx'],
@@ -46,11 +47,10 @@
   <li :key="result" v-for="result in results">
     <div
       :style="{
-        backgroundColor: result.showPunchline ? '#fae77c' : 'lightgreen'
+        backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
       }"
     >
       {{ result.setup }}
-      <!-- {{ result.showPunchline }} -->
       <SoundButton @click="togglePunchline(result)">Show</SoundButton>
       <span v-if="result.showPunchline" id="quote-span">
         {{ result.punchline }}
