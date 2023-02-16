@@ -6,6 +6,7 @@ export default defineConfig({
     target: 'es2015'
   },
   plugins: [vue()],
+  base: '/Pastime/',
   server: {
     port: 242
   },
