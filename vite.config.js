@@ -6,7 +6,7 @@ export default defineConfig({
     target: 'es2015'
   },
   plugins: [vue()],
-  base: '/Pastime/',
+  base: process.env.NODE_ENV === 'production' ? '/Pastime/' : '/',
   server: {
     port: 242
   },
