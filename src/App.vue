@@ -1,12 +1,12 @@
 <!-- components (ej router-components): det som syns på alla sidor -->
 
-<style lang="scss">
-  // @import '../assets/main.scss';
-
-  main {
-    padding: $spacer;
-  }
-</style>
+<template>
+  <RouterLink to="/" />
+  <main>
+    <SiteHeader logo="Pastime" />
+    <RouterView @punchlinefx="onPunchlineFX" />
+  </main>
+</template>
 
 <script>
   import SiteHeader from './components/SiteHeader.vue'
@@ -26,10 +26,10 @@
   }
 </script>
 
-<template>
-  <RouterLink to="/" />
-  <main>
-    <SiteHeader logo="Pastime" />
-    <RouterView @punchlinefx="onPunchlineFX" />
-  </main>
-</template>
+<style lang="scss">
+  // @import '../assets/main.scss';
+
+  main {
+    padding: $spacer;
+  }
+</style>
