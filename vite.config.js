@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [vue()],
   base: process.env.NODE_ENV === 'production' ? '/Pastime/' : '/',
   server: {
-    port: 242
+    port: 2424
   },
 
   // ref: https://stackoverflow.com/a/70849876

@@ -1,10 +1,9 @@
-<style lang="scss">
-  // @import '../../assets/main.scss';
-
-  .sound-button-padding {
-    margin: $spacer;
-  }
-</style>
+<template>
+  <button class="mx-2 my-2" v-bind="$attrs" @click="playSound">
+    <slot>Play blipp</slot>
+  </button>
+  <audio ref="soundEffect" volume="0" />
+</template>
 
 <script>
   import axios from 'axios'
@@ -29,9 +28,10 @@
   }
 </script>
 
-<template>
-  <button class="mx-2 my-2" v-bind="$attrs" @click="playSound">
-    <slot>Play blipp</slot>
-  </button>
-  <audio ref="soundEffect" volume="0" />
-</template>
+<style lang="scss">
+  // @import '../../assets/main.scss';
+
+  .sound-button-padding {
+    margin: $spacer;
+  }
+</style>

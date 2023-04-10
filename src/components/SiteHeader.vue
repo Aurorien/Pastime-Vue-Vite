@@ -1,14 +1,6 @@
-<style scoped lang="scss">
-  // @import '../../assets/main.scss';
-
-  h1 {
-    background-color: rgb(185, 235, 255);
-    // color: $primary;
-    // color: $secondary;
-    color: $third;
-    font-weight: $font-weight-bolder;
-  }
-</style>
+<template>
+  <h1 class="mb-6" role="banner">{{ logo }}</h1>
+</template>
 
 <script>
   export default {
@@ -21,6 +13,14 @@
   }
 </script>
 
-<template>
-  <h1 class="mb-6" role="banner">{{ logo }}</h1>
-</template>
+<style scoped lang="scss">
+  // @import '../../assets/main.scss';
+
+  h1 {
+    background-color: rgb(185, 235, 255);
+    // color: $primary;
+    // color: $secondary;
+    color: $third;
+    font-weight: $font-weight-bolder;
+  }
+</style>

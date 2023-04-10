@@ -1,6 +1,22 @@
-<style scoped lang="scss">
-  // @import '../../assets/main.scss';
-</style>
+<template>
+  <h1>Some {{ $route.params.theme }} jokes for you {{ name }}!</h1>
+  <li :key="result" v-for="result in results">
+    <div
+      :style="{
+        backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
+      }"
+    >
+      {{ result.setup }}
+      <SoundButton @click="togglePunchline(result)">Show</SoundButton>
+      <span v-if="result.showPunchline" id="quote-span">
+        {{ result.punchline }}
+      </span>
+    </div>
+  </li>
+  <RouterLink class="d-flex flex-column align-items-center" to="/sound"
+    >To Sound</RouterLink
+  >
+</template>
 
 <script>
   import axios from 'axios'
@@ -42,22 +58,6 @@
   }
 </script>
 
-<template>
-  <h1>Some {{ $route.params.theme }} jokes for you {{ name }}!</h1>
-  <li :key="result" v-for="result in results">
-    <div
-      :style="{
-        backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
-      }"
-    >
-      {{ result.setup }}
-      <SoundButton @click="togglePunchline(result)">Show</SoundButton>
-      <span v-if="result.showPunchline" id="quote-span">
-        {{ result.punchline }}
-      </span>
-    </div>
-  </li>
-  <RouterLink class="d-flex flex-column align-items-center" to="/sound"
-    >To Sound</RouterLink
-  >
-</template>
+<style scoped lang="scss">
+  // @import '../../assets/main.scss';
+</style>
