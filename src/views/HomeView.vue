@@ -8,9 +8,11 @@
       <SoundButton @click="navigate" role="link">Start</SoundButton>
     </RouterLink> -->
 
+    <!-- :style="buttonStyle" -->
+
     <!-- programmatic navigation (instead of the v-slot-version above): -->
     <SoundButton
-      id="runawayButton"
+      id="runaway-btn"
       @click="navigate"
       @mouseover="onRunawayButton"
       :style="buttonStyle"
@@ -34,11 +36,18 @@
         }
       },
       buttonStyle() {
-        return {
+        const styles = {
           position: 'absolute',
-          top: `${this.position.top}`,
-          left: `${this.position.left}`
+          top: `${this.position.top}%`,
+          left: `${this.position.left}%`
         }
+
+        if (window.matchMedia('(min-width: 980px)').matches) {
+          styles.top = `${this.position.top + 19}%`
+          styles.left = `${this.position.left + 5}%`
+        }
+
+        return styles
       }
     },
     components: {
@@ -47,24 +56,34 @@
     data() {
       return {
         position: {
-          top: '40%',
-          left: '48%'
+          top: 40,
+          left: 43
         }
       }
     },
     methods: {
       navigate() {
-        this.$router.push('/quotes/programming')
+        if (this.name === '') {
+          this.onRunawayButton()
+        } else {
+          this.$router.push('/quotes/programming')
+        }
       },
+
       onRunawayButton() {
         if (this.name === '') {
-          if (this.position.left === '45%' || this.position.left === '48%') {
-            this.position.left = '51%'
-          } else if (
-            this.position.left === '51%' ||
-            this.position.left === '48%'
-          ) {
-            this.position.left = '45%'
+          if (window.matchMedia('(min-width: 980px)').matches) {
+            if (this.position.left === 41 || this.position.left === 43) {
+              this.position.left = 45
+            } else if (this.position.left === 45 || this.position.left === 43) {
+              this.position.left = 41
+            }
+          } else {
+            if (this.position.left === 35 || this.position.left === 43) {
+              this.position.left = 51
+            } else if (this.position.left === 51 || this.position.left === 43) {
+              this.position.left = 35
+            }
           }
         }
       }
@@ -72,7 +91,7 @@
     watch: {
       name() {
         if (this.name !== '') {
-          this.position.left = '48%'
+          this.position.left = 43
         }
       }
     }
@@ -84,15 +103,10 @@
 
   h1 {
     margin: $spacer * 1.2;
+    margin-top: map-get($spacers, 7);
   }
 
   label {
     margin: $spacer;
   }
-
-  // #runawayButton {
-  //   position: absolute;
-  //   top: auto;
-  //   left: auto;
-  // }
 </style>
