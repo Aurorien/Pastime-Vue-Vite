@@ -73,19 +73,19 @@
       onRunawayButton() {
         if (this.name === '') {
           if (window.matchMedia('(min-width: 980px)').matches) {
-            if (this.position.left === 37.7 || this.position.left === 40) {
-              this.position.left = 42.3
+            if (this.position.left === 38.2 || this.position.left === 40) {
+              this.position.left = 42.7
             } else if (
-              this.position.left === 42.3 ||
+              this.position.left === 42.7 ||
               this.position.left === 40
             ) {
-              this.position.left = 37.7
+              this.position.left = 38.2
             }
           } else {
-            if (this.position.left === 34 || this.position.left === 40) {
-              this.position.left = 51
-            } else if (this.position.left === 51 || this.position.left === 40) {
-              this.position.left = 34
+            if (this.position.left === 30 || this.position.left === 40) {
+              this.position.left = 50
+            } else if (this.position.left === 50 || this.position.left === 40) {
+              this.position.left = 30
             }
           }
         }
