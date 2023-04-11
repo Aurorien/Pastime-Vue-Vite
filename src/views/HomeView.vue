@@ -43,8 +43,8 @@
         }
 
         if (window.matchMedia('(min-width: 980px)').matches) {
-          styles.top = `${this.position.top + 19}%`
-          styles.left = `${this.position.left + 5}%`
+          styles.top = `${this.position.top + 4}%`
+          styles.left = `${this.position.left + 7.5}%`
         }
 
         return styles
@@ -56,8 +56,8 @@
     data() {
       return {
         position: {
-          top: 45,
-          left: 41
+          top: 55,
+          left: 40
         }
       }
     },
@@ -73,16 +73,19 @@
       onRunawayButton() {
         if (this.name === '') {
           if (window.matchMedia('(min-width: 980px)').matches) {
-            if (this.position.left === 41 || this.position.left === 41) {
-              this.position.left = 45
-            } else if (this.position.left === 45 || this.position.left === 41) {
-              this.position.left = 41
+            if (this.position.left === 37.7 || this.position.left === 40) {
+              this.position.left = 42.3
+            } else if (
+              this.position.left === 42.3 ||
+              this.position.left === 40
+            ) {
+              this.position.left = 37.7
             }
           } else {
-            if (this.position.left === 35 || this.position.left === 41) {
+            if (this.position.left === 34 || this.position.left === 40) {
               this.position.left = 51
-            } else if (this.position.left === 51 || this.position.left === 41) {
-              this.position.left = 35
+            } else if (this.position.left === 51 || this.position.left === 40) {
+              this.position.left = 34
             }
           }
         }
@@ -91,7 +94,7 @@
     watch: {
       name() {
         if (this.name !== '') {
-          this.position.left = 41
+          this.position.left = 40
         }
       }
     }
