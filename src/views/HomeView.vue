@@ -8,8 +8,6 @@
       <SoundButton @click="navigate" role="link">Start</SoundButton>
     </RouterLink> -->
 
-    <!-- :style="buttonStyle" -->
-
     <!-- programmatic navigation (instead of the v-slot-version above): -->
     <div id="button-container">
       <SoundButton
