@@ -2,14 +2,16 @@
   <div>
     <h1>{{ name }}, what is sounding in there?</h1>
     <div class="space" id="sound-view">
-      <button @click="playSound">Play Sound</button>
+      <button id="play-button" @click="playSound">Play Sound</button>
       <audio ref="soundEffect" volume="0" />
       <label class="space" for="guess"
         >Which instrument is sounding when you press the button to the
         left?</label
       >
       <input id="guess" type="text" v-model="instrument" />
-      <SoundButton @click="guessEval">Submit answer</SoundButton>
+      <SoundButton @click="guessEval" button-padding="0 5px 2px 5px"
+        >Submit answer</SoundButton
+      >
       <p>{{ outcome }}</p>
       <!-- {{ instrument }} -->
     </div>
@@ -90,6 +92,11 @@
 
   h1 {
     color: rgb(20, 1, 96);
+  }
+
+  #play-button {
+    padding: 19px 15px 19px 15px;
+    border-radius: 100%;
   }
 
   .space {

@@ -11,14 +11,16 @@
     <!-- :style="buttonStyle" -->
 
     <!-- programmatic navigation (instead of the v-slot-version above): -->
-    <SoundButton
-      id="runaway-btn"
-      @click="navigate"
-      @mouseover="onRunawayButton"
-      :style="buttonStyle"
-    >
-      Start
-    </SoundButton>
+    <div id="button-container">
+      <SoundButton
+        @click="navigate"
+        @mouseover="onRunawayButton"
+        :style="buttonStyle"
+        button-padding="6px 12px"
+      >
+        Start
+      </SoundButton>
+    </div>
   </div>
 </template>
 
@@ -36,31 +38,36 @@
         }
       },
       buttonStyle() {
-        const styles = {
+        return {
           position: 'absolute',
-          top: `${this.position.top}%`,
-          left: `${this.position.left}%`
+          left: `${this.left}%`
         }
-
-        if (window.matchMedia('(min-width: 980px)').matches) {
-          styles.top = `${this.position.top + 4}%`
-          styles.left = `${this.position.left + 7.5}%`
-        }
-
-        return styles
       }
+      //Interesting code of how you can reach media queries in javascript (though I'm not using it because there was a more effective way in this case to deal with the responsitivity with a div-container and flexbox):
+      // buttonStyle() {
+      //   const styles = {
+      //     position: 'absolute',
+      //     left: `${this.left}%`
+      //   }
+
+      //   if (window.matchMedia('(min-width: 980px)').matches) {
+      //     styles.left = `${this.left + 7.5}%`
+      //   }
+
+      //   return styles
+      // }
     },
+
     components: {
       SoundButton
     },
+
     data() {
       return {
-        position: {
-          top: 55,
-          left: 40
-        }
+        left: 25
       }
     },
+
     methods: {
       navigate() {
         if (this.name === '') {
@@ -69,24 +76,12 @@
           this.$router.push('/quotes/programming')
         }
       },
-
       onRunawayButton() {
         if (this.name === '') {
-          if (window.matchMedia('(min-width: 980px)').matches) {
-            if (this.position.left === 38.2 || this.position.left === 40) {
-              this.position.left = 42.7
-            } else if (
-              this.position.left === 42.7 ||
-              this.position.left === 40
-            ) {
-              this.position.left = 38.2
-            }
-          } else {
-            if (this.position.left === 30 || this.position.left === 40) {
-              this.position.left = 50
-            } else if (this.position.left === 50 || this.position.left === 40) {
-              this.position.left = 30
-            }
+          if (this.left === 0 || this.left === 25) {
+            this.left = 52
+          } else if (this.left === 52 || this.left === 25) {
+            this.left = 0
           }
         }
       }
@@ -94,7 +89,7 @@
     watch: {
       name() {
         if (this.name !== '') {
-          this.position.left = 40
+          this.left = 25
         }
       }
     }
@@ -111,5 +106,11 @@
 
   label {
     margin: $spacer;
+  }
+
+  #button-container {
+    position: relative;
+    width: 130px;
+    margin-top: 25px;
   }
 </style>

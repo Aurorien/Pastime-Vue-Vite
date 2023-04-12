@@ -7,7 +7,11 @@
       }"
     >
       {{ result.setup }}
-      <SoundButton @click="togglePunchline(result)">Show</SoundButton>
+      <SoundButton
+        @click="togglePunchline(result)"
+        button-padding="0 3px 2px 2px"
+        >Show</SoundButton
+      >
       <span v-if="result.showPunchline" id="quote-span">
         {{ result.punchline }}
       </span>
