@@ -1,5 +1,10 @@
 <template>
-  <button class="mx-2 my-2" v-bind="$attrs" @click="playSound">
+  <button
+    class="mx-2 my-2"
+    v-bind="$attrs"
+    @click="playSound"
+    :style="cssProps"
+  >
     <slot>Play blipp</slot>
   </button>
   <audio ref="soundEffect" volume="0" />
@@ -8,6 +13,13 @@
 <script>
   import axios from 'axios'
   export default {
+    computed: {
+      cssProps() {
+        return {
+          '--button-padding': this.buttonPadding
+        }
+      }
+    },
     methods: {
       async playSound() {
         if (!this.soundUrl) {
@@ -24,6 +36,12 @@
         this.$refs.soundEffect.src = this.soundUrl
         this.$refs.soundEffect.play()
       }
+    },
+    props: {
+      buttonPadding: {
+        type: String,
+        default: null
+      }
     }
   }
 </script>
@@ -31,7 +49,7 @@
 <style lang="scss">
   // @import '../../assets/main.scss';
 
-  .sound-button-padding {
-    margin: $spacer;
+  button {
+    padding: var(--button-padding);
   }
 </style>
