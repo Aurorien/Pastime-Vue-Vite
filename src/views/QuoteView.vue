@@ -1,15 +1,16 @@
 <template>
-  <h1>Some {{ $route.params.theme }} jokes for you {{ name }}!</h1>
-  <li :key="result" v-for="result in results">
+  <h1 class="mb-5">Some {{ $route.params.theme }} jokes for you {{ name }}!</h1>
+  <li :key="result" v-for="result in results" class="list-unstyled d-flex flex-column mb-4">
     <div
       :style="{
         backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
       }"
     >
-      {{ result.setup }}
+      <span class="ms-2">{{ result.setup }}</span>
       <SoundButton
         @click="togglePunchline(result)"
-        button-padding="0 3px 2px 2px"
+        button-padding="0 3px 1px 3px"
+        button-margin="5px 12px"
         >Show</SoundButton
       >
       <span v-if="result.showPunchline" id="quote-span">
@@ -17,7 +18,8 @@
       </span>
     </div>
   </li>
-  <RouterLink class="d-flex flex-column align-items-center" to="/sound"
+
+  <RouterLink class="d-flex flex-column align-items-center mt-5" to="/sound"
     >To Sound</RouterLink
   >
 </template>
@@ -48,8 +50,8 @@
     data() {
       return {
         results: null,
-        listColor: 'lightgreen',
-        punchlineShowsColor: '#fae77c'
+        listColor: '#cdf4cd',
+        punchlineShowsColor: '#f4efdc'
       }
     },
     emits: ['punchlinefx'],

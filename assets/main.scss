@@ -1,30 +1,29 @@
-$primary:  #0b520d;
-$secondary:  #e28a16;
+$primary: #0b520d;
+$secondary: #e28a16;
 
 // $third is an invented scss-variable (doesn't exist in bootstrap)
-$third:  #ffad43;
+$third: #ffad43;
 
-$dark:  rgba(1, 14, 45, 0.9);
-$light:   #c8dfc9;
+$dark: rgba(1, 14, 45, 0.9);
+$light: #c8dfc9;
 
 $body-bg: $light;
 
 $body-color: $dark;
 
-
-
-$spacer: .5rem;
+$spacer: 0.5rem;
 $spacers: (
   0: $spacer,
-  1: $spacer * .25,
-  2: $spacer * .5,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
   6: $spacer * 4,
-  7: $spacer * 15
+  7: $spacer * 7,
+  8: $spacer * 15
 ) !default;
 
 @import 'bootstrap/scss/bootstrap';
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/functions";
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/functions';
