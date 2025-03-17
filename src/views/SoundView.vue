@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ name }}, what is sounding in there?</h1>
+    <h1 class="mb-5">{{ name }}, what is sounding in there?</h1>
     <div class="space" id="sound-view">
       <button id="play-button" @click="playSound">Play Sound</button>
       <audio ref="soundEffect" volume="0" />
@@ -9,7 +9,7 @@
         left?</label
       >
       <input id="guess" type="text" v-model="instrument" />
-      <SoundButton @click="guessEval" button-padding="0 5px 2px 5px"
+      <SoundButton @click="guessEval" button-padding="0 6px 0px 6px" button-margin="0 0 8px 8px"
         >Submit answer</SoundButton
       >
       <p>{{ outcome }}</p>
@@ -17,7 +17,7 @@
     </div>
   </div>
   <RouterLink
-    class="d-flex flex-column align-items-center"
+    class="d-flex flex-column align-items-center mt-5"
     to="/quotes/programming"
     >To Quote</RouterLink
   >
@@ -88,7 +88,7 @@
 <style scoped lang="scss">
   // @import '../../assets/main.scss';
 
-  $backgr-color: rgb(252, 247, 207);
+  $backgr-color: #d2e7df;
 
   h1 {
     color: rgb(20, 1, 96);
@@ -100,7 +100,7 @@
   }
 
   .space {
-    padding: 1rem;
+    padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 5 ) map-get($spacers, 7);
   }
 
   #sound-view {

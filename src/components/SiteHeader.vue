@@ -17,9 +17,7 @@
   // @import '../../assets/main.scss';
 
   h1 {
-    background-color: rgb(185, 235, 255);
-    // color: $primary;
-    // color: $secondary;
+    background-color: rgb(216, 239, 248);
     color: $third;
     font-weight: $font-weight-bolder;
   }

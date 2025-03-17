@@ -99,7 +99,7 @@
 
   h1 {
     margin: $spacer * 1.2;
-    margin-top: map-get($spacers, 7);
+    margin-top: map-get($spacers, 8);
   }
 
   label {
