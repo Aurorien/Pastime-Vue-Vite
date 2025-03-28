@@ -2,7 +2,7 @@
   <div id="ctn">
     <h1 class="pt-7 mb-4 ms-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
     <div class="d-flex align-items-center" id="sound-view">
-      <button id="play-button" @click="playSound">Play</button>
+      <button id="play-button" @click="toggleSound">{{ isPlaying ? 'Stop' : 'Play' }}</button>
       <audio ref="soundEffect" volume="0" />
       <label for="input-guess"
         >Which instrument is sounding when you press the play button?</label
@@ -44,7 +44,8 @@
       return {
         soundUrl: '',
         instrument: '',
-        outcome: ''
+        outcome: '',
+        isPlaying: false
       }
     },
     watch: {
@@ -55,18 +56,25 @@
       }
     },
     methods: {
-      async playSound() {
-        if (!this.soundUrl) {
-          // doc: https://freesound.org/apiv2/
-          const response = await axios.get(
-            'https://freesound.org/apiv2/sounds/7645/?token=***REMOVED***'
-          )
-          console.log('LJUDDATA', response.data)
-          this.soundUrl = response.data.previews['preview-hq-mp3']
+      async toggleSound() {
+        if (this.isPlaying) {
+          this.$refs.soundEffect.pause();
+          this.$refs.soundEffect.currentTime = 0;
+          this.isPlaying = false;
+        } else {
+          if (!this.soundUrl) {
+            // doc: https://freesound.org/apiv2/
+            const response = await axios.get(
+              'https://freesound.org/apiv2/sounds/7645/?token=***REMOVED***'
+            )
+            console.log('LJUDDATA', response.data)
+            this.soundUrl = response.data.previews['preview-hq-mp3']
+          }
+          this.$refs.soundEffect.volume = 0.5
+          this.$refs.soundEffect.src = this.soundUrl
+          this.$refs.soundEffect.play()
+          this.isPlaying = true;
         }
-        this.$refs.soundEffect.volume = 1
-        this.$refs.soundEffect.src = this.soundUrl
-        this.$refs.soundEffect.play()
       },
       guessEval() {
         if (this.instrument === 'theremin' || this.instrument === 'Theremin') {
@@ -94,6 +102,7 @@
 
   #play-button {
     padding: map-get($spacers, 4) map-get($spacers, 6);
+    min-width: 102px;
     border-radius: 100%;
     margin: 0 map-get($spacers, 4) map-get($spacers, 4) 0;
   }
