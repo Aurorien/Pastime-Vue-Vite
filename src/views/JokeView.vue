@@ -2,6 +2,7 @@
   <h1 class="mb-5">Some {{ $route.params.theme }} jokes for you {{ name }}!</h1>
   <li :key="result" v-for="result in results" class="list-unstyled d-flex flex-column mb-4">
     <div
+      class="joke"
       :style="{
         backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
       }"
@@ -13,15 +14,11 @@
         button-margin="5px 12px"
         >Show</SoundButton
       >
-      <span v-if="result.showPunchline" id="quote-span">
+      <span v-if="result.showPunchline" id="joke-span">
         {{ result.punchline }}
       </span>
     </div>
   </li>
-
-  <RouterLink class="d-flex flex-column align-items-center mt-5" to="/sound"
-    >To Sound</RouterLink
-  >
 </template>
 
 <script>
@@ -65,5 +62,7 @@
 </script>
 
 <style scoped lang="scss">
-  // @import '../../assets/main.scss';
+  h1, .joke {
+    padding: 0 map-get($spacers, 4)
+  }
 </style>

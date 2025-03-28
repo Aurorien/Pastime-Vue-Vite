@@ -1,25 +1,23 @@
-// länkhanterare
+import { createRouter, createWebHashHistory } from "vue-router"
 
-import { createRouter, createWebHashHistory } from 'vue-router'
-
-import HomeView from './views/HomeView.vue'
-import SoundView from './views/SoundView.vue'
-import QuoteView from './views/QuoteView.vue'
+import StartView from "./views/StartView.vue"
+import SoundView from "./views/SoundView.vue"
+import JokeView from "./views/JokeView.vue"
 
 export default createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      component: HomeView,
-      path: '/'
+      component: StartView,
+      path: "/"
     },
     {
       component: SoundView,
-      path: '/sound'
+      path: "/sound"
     },
     {
-      component: QuoteView,
-      path: '/quotes/:theme'
+      component: JokeView,
+      path: "/jokes/:theme"
     }
   ]
 })
