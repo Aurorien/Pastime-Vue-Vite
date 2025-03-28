@@ -16,11 +16,6 @@
       <!-- {{ instrument }} -->
     </div>
   </div>
-  <RouterLink
-    class="d-flex flex-column align-items-center mt-5"
-    to="/quotes/programming"
-    >To Quote</RouterLink
-  >
 </template>
 
 <script>
@@ -86,8 +81,6 @@
 </script>
 
 <style scoped lang="scss">
-  // @import '../../assets/main.scss';
-
   $backgr-color: #d2e7df;
 
   h1 {

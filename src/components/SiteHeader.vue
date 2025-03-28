@@ -1,23 +1,71 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
+ <!-- the above eslint-disable because of noOverlay which is how that prop is supposed to be written -->
 <template>
-  <h1 class="mb-6" role="banner">{{ logo }}</h1>
+  <div class="mb-6 position-relative" role="banner">
+    <h1 id="banner-title">{{ logo }}</h1>
+    <div class="burger">
+      <Slide right width="120" noOverlay>
+        <RouterLink to="/">
+          Start
+        </RouterLink>
+        <RouterLink to="/jokes/programming">
+          Jokes
+        </RouterLink>
+        <RouterLink to="/sound">
+          Sound
+        </RouterLink>
+      </Slide>
+    </div>
+  </div>
 </template>
 
 <script>
+import { Slide } from 'vue3-burger-menu';
+
   export default {
     props: {
       logo: {
         type: String,
         required: true
       }
-    }
+    },
+    components: {
+    Slide,
+  },
   }
 </script>
 
-<style scoped lang="scss">
-  // @import '../../assets/main.scss';
+<style lang="scss">
+  .burger {
+  right: 0;
+  }
 
-  h1 {
-    background-color: rgb(216, 239, 248);
+  .bm-burger-button {
+    position: absolute;
+    width: 21px;
+    height: 20px;
+    left: auto;
+    right: map-get($spacers, 5);
+    top: 50%;
+    transform: translateY(-50%) !important;
+  }
+
+  .bm-menu {
+    background-color: #3a5746;
+  }
+
+  .bm-burger-bars {
+    background-color: #656565;
+  }
+
+  .bm-cross {
+    background: #9f9f9f;
+  }
+
+  #banner-title {
+    position: relative;
+    padding: $spacer map-get($spacers, 4);
+    background-color: #d8eff8;
     color: $third;
     font-weight: $font-weight-bolder;
   }
