@@ -1,5 +1,5 @@
 <template>
-  <div id="ctn">
+  <div>
     <h1 class="pt-7 mb-4 ms-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
     <div class="d-flex align-items-center" id="sound-view">
       <button id="play-button" @click="toggleSound">{{ isPlaying ? 'Stop' : 'Play' }}</button>
@@ -88,16 +88,9 @@
 </script>
 
 <style scoped lang="scss">
-  $backgr-color: #d2e7df;
 
   h1 {
     color: rgb(20, 1, 96);
-  }
-
-  #ctn {
-    height: 100vh;
-    background-color: $backgr-color;
-
   }
 
   #play-button {
@@ -108,7 +101,6 @@
   }
 
   #sound-view {
-    background-color: $backgr-color;
     padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 6 ) map-get($spacers, 7);
     gap: 10px;
   }
