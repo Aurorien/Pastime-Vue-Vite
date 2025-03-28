@@ -4,7 +4,7 @@
     <label for="name-input">Input your name here:</label>
     <input v-model="name" id="name-input" type="text" />
     <!-- ref: https://codingbeautydev.com/blog/vue-router-link-button/
-    <RouterLink to="/quotes/programming" custom v-slot="{ navigate }">
+    <RouterLink to="/jokes/programming" custom v-slot="{ navigate }">
       <SoundButton @click="navigate" role="link">Start</SoundButton>
     </RouterLink> -->
 
@@ -71,7 +71,7 @@
         if (this.name === '') {
           this.onRunawayButton()
         } else {
-          this.$router.push('/quotes/programming')
+          this.$router.push('/jokes/programming')
         }
       },
       onRunawayButton() {
@@ -95,8 +95,6 @@
 </script>
 
 <style scoped lang="scss">
-  // @import '../../assets/main.scss';
-
   h1 {
     margin: $spacer * 1.2;
     margin-top: map-get($spacers, 8);
