@@ -54,6 +54,8 @@
   button {
     padding: var(--button-padding);
     margin: var(--button-margin);
+    height: fit-content;
+    text-wrap: nowrap;
     font-size: .8rem;
     border-style: groove;
     border-width: 1px;

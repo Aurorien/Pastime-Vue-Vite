@@ -1,18 +1,17 @@
 <template>
   <div>
     <h1 class="mb-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
-    <div class="space" id="sound-view">
-      <button id="play-button" @click="playSound">Play Sound</button>
+    <div class="space d-flex align-items-center" id="sound-view">
+      <button id="play-button" @click="playSound">Play</button>
       <audio ref="soundEffect" volume="0" />
-      <label class="space" for="guess"
-        >Which instrument is sounding when you press the button to the
-        left?</label
+      <label for="input-guess" class="ms-5"
+        >Which instrument is sounding when you press the play button?</label
       >
-      <input id="guess" type="text" v-model="instrument" />
-      <SoundButton @click="guessEval" button-padding="0 6px 0px 6px" button-margin="0 0 8px 8px"
+      <input id="input-guess" type="text" v-model="instrument" />
+      <SoundButton @click="guessEval" button-padding="0 6px"
         >Submit answer</SoundButton
       >
-      <p>{{ outcome }}</p>
+      <p id="outcome">{{ outcome }}</p>
       <!-- {{ instrument }} -->
     </div>
   </div>
@@ -88,19 +87,24 @@
   }
 
   #play-button {
-    padding: 19px 15px 19px 15px;
+    padding: map-get($spacers, 4) map-get($spacers, 6);
     border-radius: 100%;
   }
 
   .space {
-    padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 5 ) map-get($spacers, 7);
+    padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 6 ) map-get($spacers, 7);
   }
 
   #sound-view {
     background-color: $backgr-color;
   }
 
-  #guess {
-    margin-right: 0.5rem;
+  #input-guess {
+    margin: 0 $spacer;
+    height: 1.5rem;
+  }
+
+  #outcome {
+    margin: 0 map-get($spacers, 5);
   }
 </style>
