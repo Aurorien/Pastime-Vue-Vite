@@ -32,7 +32,7 @@
 
           this.soundUrl = response.data.previews['preview-hq-mp3']
         }
-        this.$refs.soundEffect.volume = 0.05
+        this.$refs.soundEffect.volume = 0.03
         this.$refs.soundEffect.src = this.soundUrl
         this.$refs.soundEffect.play()
       }
