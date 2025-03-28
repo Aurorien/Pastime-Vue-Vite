@@ -49,30 +49,30 @@
   }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   .burger {
   right: 0;
   }
 
-  .bm-burger-button {
+  :deep(.bm-burger-button) {
     position: absolute;
     width: 21px;
     height: 20px;
     left: auto;
     right: map-get($spacers, 5);
     top: 50%;
-    transform: translateY(-50%) !important;
+    transform: translateY(-50%);
   }
 
-  .bm-menu {
+  :deep(.bm-menu) {
     background-color: #3a5746;
   }
 
-  .bm-burger-bars {
+  :deep(.bm-burger-bars) {
     background-color: #656565;
   }
 
-  .bm-cross {
+  :deep(.bm-cross) {
     background: #9f9f9f;
   }
 
