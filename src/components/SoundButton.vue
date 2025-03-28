@@ -50,9 +50,7 @@
   }
 </script>
 
-<style lang="scss">
-  // @import '../../assets/main.scss';
-
+<style scoped lang="scss">
   button {
     padding: var(--button-padding);
     margin: var(--button-margin);
