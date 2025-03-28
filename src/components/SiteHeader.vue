@@ -3,7 +3,7 @@
 <template>
   <div class="mb-6 position-relative" role="banner">
     <h1 id="banner-title">{{ logo }}</h1>
-    <div class="burger">
+    <div class="burger" v-if="!isStartView">
       <Slide right width="120" noOverlay>
         <RouterLink to="/">
           Start
@@ -20,7 +20,10 @@
 </template>
 
 <script>
-import { Slide } from 'vue3-burger-menu';
+  import { Slide } from 'vue3-burger-menu';
+  import { useRoute } from 'vue-router';
+  import { computed } from 'vue';
+
 
   export default {
     props: {
@@ -30,8 +33,19 @@ import { Slide } from 'vue3-burger-menu';
       }
     },
     components: {
-    Slide,
-  },
+      Slide
+    },
+    setup() {
+      const route = useRoute();
+
+      const isStartView = computed(() => {
+        return route.path === '/' || route.path === '';
+      });
+
+      return {
+        isStartView
+      };
+    }
   }
 </script>
 
@@ -64,7 +78,6 @@ import { Slide } from 'vue3-burger-menu';
 
   #banner-title {
     position: relative;
-    padding: $spacer map-get($spacers, 4);
     background-color: #d8eff8;
     color: $third;
     font-weight: $font-weight-bolder;
