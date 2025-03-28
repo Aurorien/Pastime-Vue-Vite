@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="mb-5">{{ name }}, what is sounding in there?</h1>
+    <h1 class="mb-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
     <div class="space" id="sound-view">
       <button id="play-button" @click="playSound">Play Sound</button>
       <audio ref="soundEffect" volume="0" />
