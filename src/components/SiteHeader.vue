@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
  <!-- the above eslint-disable because of noOverlay which is how that prop is supposed to be written -->
 <template>
-  <div class="mb-6 position-relative" role="banner">
+  <div class="position-relative" role="banner">
     <h1 id="banner-title">{{ logo }}</h1>
     <div class="burger" v-if="!isStartView">
       <Slide right width="120" noOverlay>

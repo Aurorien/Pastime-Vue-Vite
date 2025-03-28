@@ -26,6 +26,7 @@
 
 <style lang="scss">
   h1 {
-    padding: $spacer map-get($spacers, 4)
+    padding: $spacer map-get($spacers, 4);
+    margin-bottom: 0;
   }
 </style>

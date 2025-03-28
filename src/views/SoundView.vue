@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <h1 class="mb-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
-    <div class="space d-flex align-items-center" id="sound-view">
+  <div id="ctn">
+    <h1 class="pt-7 mb-4 ms-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
+    <div class="d-flex align-items-center" id="sound-view">
       <button id="play-button" @click="playSound">Play</button>
       <audio ref="soundEffect" volume="0" />
-      <label for="input-guess" class="ms-5"
+      <label for="input-guess"
         >Which instrument is sounding when you press the play button?</label
       >
       <input id="input-guess" type="text" v-model="instrument" />
@@ -86,25 +86,41 @@
     color: rgb(20, 1, 96);
   }
 
+  #ctn {
+    height: 100vh;
+    background-color: $backgr-color;
+
+  }
+
   #play-button {
     padding: map-get($spacers, 4) map-get($spacers, 6);
     border-radius: 100%;
-  }
-
-  .space {
-    padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 6 ) map-get($spacers, 7);
+    margin: 0 map-get($spacers, 4) map-get($spacers, 4) 0;
   }
 
   #sound-view {
     background-color: $backgr-color;
+    padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 6 ) map-get($spacers, 7);
+    gap: 10px;
   }
 
   #input-guess {
-    margin: 0 $spacer;
     height: 1.5rem;
   }
 
   #outcome {
-    margin: 0 map-get($spacers, 5);
+    margin: 0 0 0 map-get($spacers, 3);
   }
+
+  @media (max-width: 1292px) {
+    #sound-view {
+      flex-direction: column;
+      align-items: start !important;
+    }
+
+    #outcome {
+      margin: map-get($spacers, 3) 0 0 0;
+    }
+  }
+
 </style>
