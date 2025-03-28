@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mb-5">Some {{ $route.params.theme }} jokes for you{{ name? ` ${name}` : null }}!</h1>
+  <h1 class="mb-5 mt-5">Some {{ $route.params.theme }} jokes for you{{ name? ` ${name}` : null }}!</h1>
   <li :key="result" v-for="result in results" class="list-unstyled d-flex flex-column mb-4">
     <div
       class="joke"
