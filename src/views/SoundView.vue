@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="pt-7 mb-4 ms-5">{{ name? name : "Hey" }}, what is sounding in there?</h1>
+    <ViewTitle>{{ name? name : "Hey" }}, what is sounding in there?</ViewTitle>
     <div class="d-flex align-items-center" id="sound-view">
       <button id="play-button" @click="toggleSound">{{ isPlaying ? 'Stop' : 'Play' }}</button>
       <audio ref="soundEffect" volume="0" />
@@ -19,6 +19,7 @@
 
 <script>
   import axios from 'axios'
+  import ViewTitle from '../components/ViewTitle.vue'
   import SoundButton from '../components/SoundButton.vue'
 
   export default {
@@ -33,6 +34,7 @@
         })
     },
     components: {
+      ViewTitle,
       SoundButton
     },
     computed: {
