@@ -1,5 +1,5 @@
 <template>
-  <h1 class="mb-5 mt-5">Some {{ $route.params.theme }} jokes for you{{ name? ` ${name}` : null }}!</h1>
+  <ViewTitle>Some {{ $route.params.theme }} jokes for you{{ name? ` ${name}` : null }}!</ViewTitle>
   <li :key="result" v-for="result in results" class="list-unstyled d-flex flex-column mb-4">
     <div
       class="joke"
@@ -7,7 +7,7 @@
         backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
       }"
     >
-      <span class="ms-2">{{ result.setup }}</span>
+      <span class="ms-5">{{ result.setup }}</span>
       <SoundButton
         @click="togglePunchline(result)"
         button-padding="0 3px 1px 3px"
@@ -23,6 +23,7 @@
 
 <script>
   import axios from 'axios'
+  import ViewTitle from '../components/ViewTitle.vue'
   import SoundButton from '../components/SoundButton.vue'
 
   export default {
@@ -37,6 +38,7 @@
         })
     },
     components: {
+      ViewTitle,
       SoundButton
     },
     computed: {
