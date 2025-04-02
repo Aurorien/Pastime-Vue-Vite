@@ -7,7 +7,7 @@
         backgroundColor: result.showPunchline ? punchlineShowsColor : listColor
       }"
     >
-      <span class="ms-5">{{ result.setup }}</span>
+      <span>{{ result.setup }}</span>
       <SoundButton
         @click="togglePunchline(result)"
         button-padding="0 3px 1px 3px"
@@ -65,6 +65,6 @@
 
 <style scoped lang="scss">
   .joke {
-    padding: 0 map-get($spacers, 4)
+    padding: 0 map-get($spacers, 6)
   }
 </style>
