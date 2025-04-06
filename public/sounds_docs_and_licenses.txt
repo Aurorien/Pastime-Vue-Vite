@@ -1,0 +1,3 @@
+doc: https://freesound.org/apiv2/
+"8-bit pickup sound" and "8-bit fail" by user SamsterBirdies at freesound.org, license: http://creativecommons.org/publicdomain/zero/1.0/
+Theremin sound 7645: "theremin3verb.wav" by user NoiseCollector at freesound.org, no changes have been made by me, license: https://creativecommons.org/licenses/by/3.0/
