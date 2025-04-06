@@ -1,18 +1,16 @@
 <template>
   <div>
-    <ViewTitle>{{ name? name : "Hey" }}, what is sounding in there?</ViewTitle>
-    <div class="d-flex align-items-center" id="sound-view">
-      <button id="play-button" @click="toggleSound">{{ isPlaying ? 'Stop' : 'Play' }}</button>
+    <div class="sound-view">
+      <button class="play-button" @click="toggleSound">
       <audio ref="soundEffect" volume="0" />
       <label for="input-guess"
         >Which instrument is sounding when you press the play button?</label
       >
-      <input id="input-guess" type="text" v-model="instrument" />
-      <SoundButton @click="guessEval" button-padding="0 6px"
+        id="input-guess"
+        class="input-guess"
         >Submit answer</SoundButton
       >
-      <p id="outcome">{{ outcome }}</p>
-      <!-- {{ instrument }} -->
+      <p class="outcome">{{ outcome }}</p>
     </div>
   </div>
 </template>
@@ -90,40 +88,41 @@
 </script>
 
 <style scoped lang="scss">
-
   h1 {
     color: rgb(20, 1, 96);
   }
 
-  #play-button {
-    padding: map-get($spacers, 4) map-get($spacers, 6);
+  .play-button {
+    padding: map-get($spacers, 2) map-get($spacers, 4);
     min-width: 102px;
     border-radius: 100%;
-    margin: 0 map-get($spacers, 4) map-get($spacers, 4) 0;
+    margin: 0 map-get($spacers, 2) map-get($spacers, 1) 0;
   }
 
-  #sound-view {
-    padding: map-get($spacers, 6 ) map-get($spacers, 5) map-get($spacers, 6 ) map-get($spacers, 7);
-    gap: 10px;
+  .sound-view {
+    display: flex;
+    align-items: center;
+    padding: map-get($spacers, 4);
+    padding-top: map-get($spacers, 1);
+    gap: map-get($spacers, 3);
   }
 
-  #input-guess {
+  .input-guess {
     height: 1.5rem;
   }
 
-  #outcome {
-    margin: 0 0 0 map-get($spacers, 3);
+  .outcome {
+    margin: 0 0 0 $spacer;
   }
 
   @media (max-width: 1292px) {
-    #sound-view {
+    .sound-view {
       flex-direction: column;
       align-items: start !important;
     }
 
-    #outcome {
-      margin: map-get($spacers, 3) 0 0 0;
+    .outcome {
+      margin: $spacer 0 0 0;
     }
   }
-
 </style>

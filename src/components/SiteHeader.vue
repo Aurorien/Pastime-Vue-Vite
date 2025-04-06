@@ -1,29 +1,22 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
- <!-- the above eslint-disable because of noOverlay which is how that prop is supposed to be written -->
+<!-- the above eslint-disable because of noOverlay which is how that prop is supposed to be written -->
 <template>
   <div class="position-relative" role="banner">
-    <h1 id="banner-title">{{ logo }}</h1>
+    <h1 class="banner-title">{{ logo }}</h1>
     <div class="burger" v-if="!isStartView">
       <Slide right width="120" noOverlay>
-        <RouterLink to="/">
-          Start
-        </RouterLink>
-        <RouterLink to="/jokes/programming">
-          Jokes
-        </RouterLink>
-        <RouterLink to="/sound">
-          Sound
-        </RouterLink>
+        <RouterLink to="/"> Start </RouterLink>
+        <RouterLink to="/jokes/programming"> Jokes </RouterLink>
+        <RouterLink to="/sound"> Sound </RouterLink>
       </Slide>
     </div>
   </div>
 </template>
 
 <script>
-  import { Slide } from 'vue3-burger-menu';
-  import { useRoute } from 'vue-router';
-  import { computed } from 'vue';
-
+  import { Slide } from 'vue3-burger-menu'
+  import { useRoute } from 'vue-router'
+  import { computed } from 'vue'
 
   export default {
     props: {
@@ -36,22 +29,22 @@
       Slide
     },
     setup() {
-      const route = useRoute();
+      const route = useRoute()
 
       const isStartView = computed(() => {
-        return route.path === '/' || route.path === '';
-      });
+        return route.path === '/' || route.path === ''
+      })
 
       return {
         isStartView
-      };
+      }
     }
   }
 </script>
 
 <style scoped lang="scss">
   .burger {
-  right: 0;
+    right: 0;
   }
 
   :deep(.bm-burger-button) {
@@ -59,7 +52,7 @@
     width: 21px;
     height: 20px;
     left: auto;
-    right: map-get($spacers, 5);
+    right: map-get($spacers, 3);
     top: 50%;
     transform: translateY(-50%);
   }
@@ -76,7 +69,7 @@
     background: #9f9f9f;
   }
 
-  #banner-title {
+  .banner-title {
     position: relative;
     background-color: #d8eff8;
     color: $third;

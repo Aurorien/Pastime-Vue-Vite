@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column align-items-center">
+  <div class="start-view-ctn">
     <h1>Welcome!</h1>
     <label for="name-input">Input your name here:</label>
     <input v-model="name" id="name-input" type="text" />
@@ -9,7 +9,7 @@
     </RouterLink> -->
 
     <!-- programmatic navigation (instead of the v-slot-version above): -->
-    <div id="button-container">
+    <div class="button-container">
       <SoundButton
         @click="navigate"
         @mouseover="onRunawayButton"
@@ -96,7 +96,7 @@
 
 <style scoped lang="scss">
   h1 {
-    margin: $spacer * 1.2;
+    margin: map-get($spacers, 2);
     margin-top: map-get($spacers, 8);
   }
 
@@ -104,9 +104,15 @@
     margin: $spacer;
   }
 
-  #button-container {
+  .button-container {
     position: relative;
     width: 130px;
     margin-top: 25px;
+  }
+
+  .start-view-ctn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 </style>
