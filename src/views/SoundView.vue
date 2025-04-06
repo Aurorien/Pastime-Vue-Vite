@@ -19,6 +19,7 @@
         @click="guessEval"
         button-padding="0 6px"
         @custom-sound="playSound"
+        no-sound="true"
         >Submit answer</SoundButton
       >
       <p class="outcome">{{ outcome }}</p>
@@ -30,6 +31,7 @@
   import axios from 'axios'
   import ViewTitle from '../components/ViewTitle.vue'
   import SoundButton from '../components/SoundButton.vue'
+  import { getSoundPath } from '../utils/paths'
 
   export default {
     components: {
@@ -71,7 +73,7 @@
             console.log('LJUDDATA', response.data)
             this.soundInstrument = response.data.previews['preview-hq-mp3']
           }
-          this.$refs.soundEffect.volume = 0.5
+          this.$refs.soundEffect.volume = 0.4
           this.$refs.soundEffect.src = this.soundInstrument
           this.$refs.soundEffect.play()
           this.isPlaying = true
@@ -90,11 +92,11 @@
         const audio = new Audio()
         audio.volume = 0.02
         if (this.rightAnswer) {
-          audio.src =
-            '../../public/sounds/368492__samsterbirdies__8-bit-pickup-sound.wav'
+          audio.src = getSoundPath(
+            '368492__samsterbirdies__8-bit-pickup-sound.wav'
+          )
         } else {
-          audio.src =
-            '../../public/sounds/558735__samsterbirdies__8-bit-fail.wav'
+          audio.src = getSoundPath('558735__samsterbirdies__8-bit-fail.wav')
         }
         audio.play()
       }

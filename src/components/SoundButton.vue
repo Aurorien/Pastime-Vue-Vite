@@ -6,6 +6,8 @@
 </template>
 
 <script>
+  import { getSoundPath } from '../utils/paths'
+
   export default {
     computed: {
       cssProps() {
@@ -17,8 +19,9 @@
     },
     data() {
       return {
-        defaultSoundUrl:
-          '../../public/sounds/368492__samsterbirdies__8-bit-pickup-sound.wav'
+        defaultSoundUrl: getSoundPath(
+          '368492__samsterbirdies__8-bit-pickup-sound.wav'
+        )
       }
     },
     emits: ['custom-sound'],
@@ -26,7 +29,10 @@
       async playSound() {
         this.$emit('custom-sound')
 
-        if (this.soundUrl) {
+        if (!this.noSound) {
+          this.$refs.soundEffect.pause()
+          this.$refs.soundEffect.currentTime = 0
+
           this.$refs.soundEffect.volume = 0.03
           this.$refs.soundEffect.src = this.soundUrl || this.defaultSoundUrl
           this.$refs.soundEffect.play()
@@ -45,6 +51,10 @@
       soundUrl: {
         type: String,
         default: null
+      },
+      noSound: {
+        type: Boolean,
+        default: false
       }
     }
   }
