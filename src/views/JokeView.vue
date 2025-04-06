@@ -1,7 +1,29 @@
 <template>
+  <ViewTitle
+    >Some {{ $route.params.theme }} jokes for you{{
+      name ? ` ${name}` : null
+    }}!</ViewTitle
+  >
   <ul class="joke-list">
     <li :key="result" v-for="result in results" class="joke-item">
       <div class="joke" :class="{ 'joke--revealed': result.showPunchline }">
+        <span>{{ result.setup }}</span>
+        <SoundButton
+          @click="togglePunchline(result)"
+          button-padding="0 3px 1px 3px"
+          button-margin="5px 12px"
+        >
+          {{ result.showPunchline ? 'Hide' : 'Show' }}
+        </SoundButton>
+        <span
+          v-if="result.showPunchline"
+          id="joke-span"
+          class="joke__punchline"
+        >
+          {{ result.punchline }}
+        </span>
+      </div>
+    </li>
   </ul>
 </template>
 
@@ -17,7 +39,10 @@
         .get('https://official-joke-api.appspot.com/jokes/programming/ten/')
         .then((response) => {
           console.log(response)
-          this.results = response.data
+          this.results = response.data.map((joke) => ({
+            ...joke,
+            showPunchline: false
+          }))
           console.log('Resultat', this.results)
         })
     },
@@ -32,9 +57,7 @@
     },
     data() {
       return {
-        results: null,
-        listColor: '#cdf4cd',
-        punchlineShowsColor: '#f4efdc'
+        results: null
       }
     },
     emits: ['punchlinefx'],

@@ -1,13 +1,24 @@
 <template>
   <div>
+    <ViewTitle>{{ name ? name : 'Hey' }}, what is sounding in there?</ViewTitle>
     <div class="sound-view">
       <button class="play-button" @click="toggleSound">
+        {{ isPlaying ? 'Stop' : 'Play' }}
+      </button>
       <audio ref="soundEffect" volume="0" />
       <label for="input-guess"
         >Which instrument is sounding when you press the play button?</label
       >
+      <input
         id="input-guess"
         class="input-guess"
+        type="text"
+        v-model="instrument"
+      />
+      <SoundButton
+        @click="guessEval"
+        button-padding="0 6px"
+        @custom-sound="playSound"
         >Submit answer</SoundButton
       >
       <p class="outcome">{{ outcome }}</p>
@@ -21,16 +32,6 @@
   import SoundButton from '../components/SoundButton.vue'
 
   export default {
-    created() {
-      // doc: https://freesound.org/apiv2/
-      axios
-        .get(
-          'https://freesound.org/apiv2/search/text/?query=8bit&token=***REMOVED***'
-        )
-        .then((response) => {
-          console.log('Response', response)
-        })
-    },
     components: {
       ViewTitle,
       SoundButton
@@ -42,7 +43,8 @@
     },
     data() {
       return {
-        soundUrl: '',
+        rightAnswer: false,
+        soundInstrument: '',
         instrument: '',
         outcome: '',
         isPlaying: false
@@ -58,30 +60,43 @@
     methods: {
       async toggleSound() {
         if (this.isPlaying) {
-          this.$refs.soundEffect.pause();
-          this.$refs.soundEffect.currentTime = 0;
-          this.isPlaying = false;
+          this.$refs.soundEffect.pause()
+          this.$refs.soundEffect.currentTime = 0
+          this.isPlaying = false
         } else {
-          if (!this.soundUrl) {
-            // doc: https://freesound.org/apiv2/
+          if (!this.soundInstrument) {
             const response = await axios.get(
               'https://freesound.org/apiv2/sounds/7645/?token=***REMOVED***'
             )
             console.log('LJUDDATA', response.data)
-            this.soundUrl = response.data.previews['preview-hq-mp3']
+            this.soundInstrument = response.data.previews['preview-hq-mp3']
           }
           this.$refs.soundEffect.volume = 0.5
-          this.$refs.soundEffect.src = this.soundUrl
+          this.$refs.soundEffect.src = this.soundInstrument
           this.$refs.soundEffect.play()
-          this.isPlaying = true;
+          this.isPlaying = true
         }
       },
       guessEval() {
         if (this.instrument === 'theremin' || this.instrument === 'Theremin') {
+          this.rightAnswer = true
           this.outcome = `That is right, it is a ${this.instrument}!`
         } else {
+          this.rightAnswer = false
           this.outcome = 'Not the right instrument, you can try again!'
         }
+      },
+      playSound() {
+        const audio = new Audio()
+        audio.volume = 0.02
+        if (this.rightAnswer) {
+          audio.src =
+            '../../public/sounds/368492__samsterbirdies__8-bit-pickup-sound.wav'
+        } else {
+          audio.src =
+            '../../public/sounds/558735__samsterbirdies__8-bit-fail.wav'
+        }
+        audio.play()
       }
     }
   }

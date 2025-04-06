@@ -1,16 +1,11 @@
 <template>
-  <button
-    v-bind="$attrs"
-    @click="playSound"
-    :style="cssProps"
-  >
+  <button v-bind="$attrs" @click="playSound" :style="cssProps">
     <slot>Play blipp</slot>
   </button>
   <audio ref="soundEffect" volume="0" />
 </template>
 
 <script>
-  import axios from 'axios'
   export default {
     computed: {
       cssProps() {
@@ -20,21 +15,22 @@
         }
       }
     },
+    data() {
+      return {
+        defaultSoundUrl:
+          '../../public/sounds/368492__samsterbirdies__8-bit-pickup-sound.wav'
+      }
+    },
+    emits: ['custom-sound'],
     methods: {
       async playSound() {
-        if (!this.soundUrl) {
-          // doc: https://freesound.org/apiv2/
-          // name: "8-bit pickup sound", license: "http://creativecommons.org/publicdomain/zero/1.0/"
-          const response = await axios.get(
-            'https://freesound.org/apiv2/sounds/368492/?token=***REMOVED***'
-          )
-          console.log('LJUDDATA', response.data)
+        this.$emit('custom-sound')
 
-          this.soundUrl = response.data.previews['preview-hq-mp3']
+        if (this.soundUrl) {
+          this.$refs.soundEffect.volume = 0.03
+          this.$refs.soundEffect.src = this.soundUrl || this.defaultSoundUrl
+          this.$refs.soundEffect.play()
         }
-        this.$refs.soundEffect.volume = 0.03
-        this.$refs.soundEffect.src = this.soundUrl
-        this.$refs.soundEffect.play()
       }
     },
     props: {
@@ -43,6 +39,10 @@
         default: null
       },
       buttonMargin: {
+        type: String,
+        default: null
+      },
+      soundUrl: {
         type: String,
         default: null
       }
@@ -56,7 +56,7 @@
     margin: var(--button-margin);
     height: fit-content;
     text-wrap: nowrap;
-    font-size: .8rem;
+    font-size: 0.8rem;
     border-style: groove;
     border-width: 1px;
     border-color: rgb(185, 185, 185);
