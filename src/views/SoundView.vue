@@ -28,7 +28,6 @@
 </template>
 
 <script>
-  import axios from 'axios'
   import ViewTitle from '../components/ViewTitle.vue'
   import SoundButton from '../components/SoundButton.vue'
   import { getSoundPath } from '../utils/paths'
@@ -52,6 +51,7 @@
         isPlaying: false
       }
     },
+    // experimental watch
     watch: {
       instrument(newInstrument, oldInstrument) {
         console.log(
@@ -67,11 +67,9 @@
           this.isPlaying = false
         } else {
           if (!this.soundInstrument) {
-            const response = await axios.get(
-              'https://freesound.org/apiv2/sounds/7645/?token=***REMOVED***'
+            this.soundInstrument = getSoundPath(
+              '7645__noisecollector__theremin3verb.wav'
             )
-            console.log('LJUDDATA', response.data)
-            this.soundInstrument = response.data.previews['preview-hq-mp3']
           }
           this.$refs.soundEffect.volume = 0.4
           this.$refs.soundEffect.src = this.soundInstrument
