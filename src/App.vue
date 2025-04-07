@@ -2,7 +2,7 @@
   <RouterLink to="/" />
   <main>
     <SiteHeader logo="Pastime" />
-    <RouterView @punchlinefx="onPunchlineFX" />
+    <RouterView />
   </main>
 </template>
 
@@ -15,11 +15,6 @@
     },
     data() {
       return { soundUrl: '' }
-    },
-    methods: {
-      onPunchlineFX() {
-        console.log('the punchlinefx-emit has landed')
-      }
     }
   }
 </script>

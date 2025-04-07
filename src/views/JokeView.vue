@@ -1,9 +1,7 @@
 <template>
-  <ViewTitle
-    >Some {{ $route.params.theme }} jokes for you{{
-      name ? ` ${name}` : null
-    }}!</ViewTitle
-  >
+  <ViewTitle>
+    Some {{ $route.params.theme }} jokes for you{{ name ? ` ${name}` : null }}!
+  </ViewTitle>
   <ul class="joke-list">
     <li :key="result" v-for="result in results" class="joke-item">
       <div class="joke" :class="{ 'joke--revealed': result.showPunchline }">
