@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <!-- the above eslint-disable because of noOverlay which is how that prop is supposed to be written -->
 <template>
-  <div class="position-relative" role="banner">
-    <h1 class="banner-title">{{ logo }}</h1>
+  <header>
+    <h1 class="header-title">{{ logo }}</h1>
     <div class="burger" v-if="!isStartView">
       <Slide right width="120" noOverlay>
         <RouterLink to="/"> Start </RouterLink>
@@ -10,7 +10,7 @@
         <RouterLink to="/sound"> Sound </RouterLink>
       </Slide>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -43,6 +43,20 @@
 </script>
 
 <style scoped lang="scss">
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header-title {
+    position: relative;
+    background: linear-gradient(to left, #d8eff8, #e5f2f8);
+    color: $secondary;
+    font-weight: $font-weight-bolder;
+    box-shadow: 0 2px 4px rgba(113, 118, 110, 0.09);
+  }
+
   .burger {
     right: 0;
   }
@@ -67,12 +81,5 @@
 
   :deep(.bm-cross) {
     background: #9f9f9f;
-  }
-
-  .banner-title {
-    position: relative;
-    background-color: #d8eff8;
-    color: $third;
-    font-weight: $font-weight-bolder;
   }
 </style>

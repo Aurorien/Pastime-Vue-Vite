@@ -12,7 +12,7 @@
 
 <style scoped lang="scss">
   h1 {
-    padding: map-get($spacers, 6) map-get($spacers, 4) map-get($spacers, 5)
+    padding: map-get($spacers, 5) map-get($spacers, 4) map-get($spacers, 4)
       map-get($spacers, 4);
   }
 </style>

@@ -1,6 +1,6 @@
 // overriding existing boostrap scss variables
-$primary: #fff9e1;
-$secondary: #dc6a13;
+$primary: #fffdf4;
+$secondary: #d26b05;
 
 $dark: rgba(1, 14, 45, 0.9);
 $light: #d2e7df;
@@ -16,14 +16,13 @@ $spacers: (
   2: $spacer * 1.5,
   3: $spacer * 3,
   4: $spacer * 4,
-  5: $spacer * 6,
+  5: $spacer * 5.2,
   6: $spacer * 8,
-  7: $spacer * 12,
+  7: $spacer * 10,
   8: $spacer * 15
 ) !default;
 
 // custom scss variables (doesn't exist in bootstrap)
-$third: #ffad43;
 $list-color: #cdf4cd;
 $punchline-shows-color: #f4efdc;
 

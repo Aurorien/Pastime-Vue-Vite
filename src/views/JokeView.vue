@@ -70,7 +70,7 @@
 
 <style scoped lang="scss">
   .joke-list {
-    padding: 0;
+    padding: map-get($spacers, 1) 0 map-get($spacers, 6) 0;
   }
 
   .joke-item {

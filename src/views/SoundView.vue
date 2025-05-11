@@ -1,7 +1,7 @@
 <template>
   <div>
     <ViewTitle>{{ name ? name : 'Hey' }}, what is sounding in there?</ViewTitle>
-    <div class="sound-view">
+    <div class="sound-guess">
       <button class="play-button" @click="toggleSound">
         {{ isPlaying ? 'Stop' : 'Play' }}
       </button>
@@ -114,30 +114,34 @@
     margin: 0 map-get($spacers, 2) map-get($spacers, 1) 0;
   }
 
-  .sound-view {
+  .sound-guess {
     display: flex;
     align-items: center;
-    padding: map-get($spacers, 4);
-    padding-top: map-get($spacers, 1);
-    gap: map-get($spacers, 3);
+    padding: map-get($spacers, 1) map-get($spacers, 4) map-get($spacers, 7)
+      map-get($spacers, 4);
+    gap: map-get($spacers, 2);
   }
 
   .input-guess {
-    height: 1.5rem;
+    height: map-get($spacers, 3);
   }
 
   .outcome {
-    margin: 0 0 0 $spacer;
+    margin: 0 0 0 map-get($spacers, 3);
   }
 
   @media (max-width: 1292px) {
-    .sound-view {
+    .sound-guess {
       flex-direction: column;
       align-items: start !important;
     }
 
+    .play-button {
+      margin-bottom: map-get($spacers, 2);
+    }
+
     .outcome {
-      margin: $spacer 0 0 0;
+      margin: map-get($spacers, 2) 0 0 0;
     }
   }
 </style>
